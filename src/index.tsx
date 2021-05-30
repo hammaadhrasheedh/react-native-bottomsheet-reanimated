@@ -13,6 +13,7 @@ import {
   Keyboard,
   StyleProp,
   ViewStyle,
+  BackHandler,
 } from 'react-native';
 
 import Animated, { Extrapolate } from 'react-native-reanimated';
@@ -53,6 +54,7 @@ type Porps = {
   keyboardAwareExtraSnapHeight?: number;
   keyboardAwareDrag?: boolean;
   zIndexPanel?:number;
+  onBack: () => void;
 };
 const Index = forwardRef(
   (
@@ -84,6 +86,7 @@ const Index = forwardRef(
       keyboardAwareExtraSnapHeight = 0,
       keyboardAwareDrag = false,
       zIndexPanel=2,
+      onBack=()=>{},
     }: Porps,
     ref
   ) => {
@@ -100,6 +103,21 @@ const Index = forwardRef(
       isBottomSheetDismissed,
       setIsBottomSheetDismissed,
     ] = useState<boolean>(initialPosition === 0 || initialPosition === '0%');
+
+    useEffect(() => {
+      const backAction = () => {
+        onBack()
+        console.log('going back')
+        return true;
+      };
+  
+      const backHandler = BackHandler.addEventListener(
+        "hardwareBackPress",
+        backAction
+      );
+  
+      return () => backHandler.remove();
+    }, []);
 
     const onDrawerSnap = (snap: any) => {
       const index = snap.nativeEvent.index;
