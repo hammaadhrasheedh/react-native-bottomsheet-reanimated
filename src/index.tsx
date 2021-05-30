@@ -52,6 +52,7 @@ type Porps = {
   keyboardAware?: boolean;
   keyboardAwareExtraSnapHeight?: number;
   keyboardAwareDrag?: boolean;
+  zIndexPanel?:number;
 };
 const Index = forwardRef(
   (
@@ -82,6 +83,7 @@ const Index = forwardRef(
       keyboardAware = false,
       keyboardAwareExtraSnapHeight = 0,
       keyboardAwareDrag = false,
+      zIndexPanel=2,
     }: Porps,
     ref
   ) => {
@@ -186,7 +188,7 @@ const Index = forwardRef(
     };
 
     return (
-      <View style={styles.panelContainer} pointerEvents={'box-none'}>
+      <View style={[styles.panelContainer,{zIndex:zIndexPanel}]} pointerEvents={'box-none'}>
         {/* Backdrop */}
         {isBackDrop && (
           <Animated.View
