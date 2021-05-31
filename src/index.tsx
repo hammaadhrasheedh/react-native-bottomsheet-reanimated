@@ -54,6 +54,7 @@ type Porps = {
   keyboardAwareExtraSnapHeight?: number;
   keyboardAwareDrag?: boolean;
   zIndexPanel?:number;
+  handleBack?:boolean;
   onBack: () => void;
 };
 const Index = forwardRef(
@@ -86,6 +87,7 @@ const Index = forwardRef(
       keyboardAwareExtraSnapHeight = 0,
       keyboardAwareDrag = false,
       zIndexPanel=2,
+      handleBack=false,
       onBack=()=>{},
     }: Porps,
     ref
@@ -103,20 +105,23 @@ const Index = forwardRef(
       isBottomSheetDismissed,
       setIsBottomSheetDismissed,
     ] = useState<boolean>(initialPosition === 0 || initialPosition === '0%');
+    let backHandler=false;
 
     useEffect(() => {
       const backAction = () => {
         onBack()
-        console.log('going back')
+        console.log('going back?')
         return true;
       };
-  
-      const backHandler = BackHandler.addEventListener(
+      
+      backHandler = handleBack && BackHandler.addEventListener(
         "hardwareBackPress",
         backAction
       );
   
-      return () => backHandler.remove();
+      return () => {
+        backHandler && backHandler.remove();
+      };
     }, []);
 
     const onDrawerSnap = (snap: any) => {
