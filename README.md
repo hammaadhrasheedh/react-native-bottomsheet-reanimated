@@ -97,6 +97,9 @@ class Example extends React.Component {
 | containerStyle               | no       |           | for change style of container                                                                                                                                                                                                                                                  |
 | bodyContainerStyle           | no       |           | for change style of body container                                                                                                                                                                                                                                             |
 | onChangeSnap                 | no       |           | Method call when change any snap                                                                                                                                                                                                                                               |
+| handleBack                   | no       |           | If `true` then hardware back action should be handled manually.                                                                                                                                                                                                                 |
+| onBack                       | no       |           | Method call when hardware back action is triggered                                                                                                                                                                                                                             |
+
 
 ## Methods
 
