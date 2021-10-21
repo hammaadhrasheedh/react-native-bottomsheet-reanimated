@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
+import FlatlistComponent from './components/flatlist';
 
 import BottomSheet from 'react-native-bottomsheet-reanimated';
 
@@ -56,7 +57,8 @@ class App extends Component {
           isBackDrop={true}
           isBackDropDismissByPress={true}
           isRoundBorderWithTipHeader={true}
-          keyboardAware
+          // overDrag={false}
+          // keyboardAware
           // isModal
           // containerStyle={{backgroundColor:"red"}}
           // tipStyle={{backgroundColor:"red"}}
@@ -71,6 +73,7 @@ class App extends Component {
             <View style={styles.body}>
               <Text style={styles.text}>Body</Text>
               <TextInput style={{ width: '100%', backgroundColor: 'gray' }} />
+              <FlatlistComponent />
             </View>
           }
         />
@@ -96,10 +99,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  body: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  body: {},
   text: {
     fontSize: 20,
     fontWeight: 'bold',
