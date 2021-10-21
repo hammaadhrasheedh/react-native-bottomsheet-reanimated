@@ -11,7 +11,7 @@ declare type Porps = {
   isRoundBorderWithTipHeader: boolean;
   tipHeaderRadius: number;
   header: React.ReactNode;
-  body: React.ReactNode;
+  body: React.ReactNode | any;
   isBackDrop: boolean;
   isModal: boolean;
   dragEnabled: boolean;
@@ -27,6 +27,7 @@ declare type Porps = {
   keyboardAware?: boolean;
   keyboardAwareExtraSnapHeight?: number;
   keyboardAwareDrag?: boolean;
+  overDrag?: boolean;
 };
 declare const Index: React.ForwardRefExoticComponent<
   Porps & React.RefAttributes<unknown>
