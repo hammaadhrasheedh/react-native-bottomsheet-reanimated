@@ -133,7 +133,7 @@ const Index = forwardRef(
       isBottomSheetDismissed,
       setIsBottomSheetDismissed,
     ] = useState<boolean>(initialPosition === 0 || initialPosition === '0%');
-    let backHandler=false;
+    // let backHandler;
 
     useEffect(() => {
       const backAction = () => {
@@ -142,7 +142,7 @@ const Index = forwardRef(
         return true;
       };
       
-      backHandler = handleBack && BackHandler.addEventListener(
+      var backHandler = handleBack && BackHandler.addEventListener(
         "hardwareBackPress",
         backAction
       );
